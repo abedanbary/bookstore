@@ -1,0 +1,201 @@
+﻿@model IEnumerable<idefny.Models.Waitlist>
+
+@{
+    ViewData["Title"] = "My Waitlist Books";
+}
+
+<style>
+    .container {
+        margin-top: 40px;
+    }
+
+    h2 {
+        margin-bottom: 30px;
+        color: #4CAF50;
+        font-size: 2rem;
+    }
+
+    .card {
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .card-img-top {
+        border-radius: 15px 15px 0 0;
+        object-fit: cover;
+        height: 250px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        color: #333;
+    }
+
+    .card-text {
+        color: #555;
+    }
+
+    .btn {
+        background-color: #4CAF50;
+        color: white;
+        font-size: 1rem;
+        padding: 8px 16px;
+        border-radius: 5px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+        .btn:hover {
+            background-color: #45a049;
+            color: white;
+        }
+
+    .alert {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #eaf7e2;
+        border-color: #c7e6b0;
+        color: #4CAF50;
+    }
+
+    .book-detail {
+        font-size: 1.1rem;
+    }
+
+        .book-detail strong {
+            color: #333;
+        }
+
+
+
+
+    .btn {
+        font-size: 0.85rem; /* גודל כפתור קטן */
+        padding: 6px 12px;
+        border-radius: 20px; /* כפתורים עגולים */
+        display: inline-flex; /* סידור אייקון וטקסט */
+        align-items: center;
+        gap: 5px; /* מרווח בין אייקון לטקסט */
+        text-transform: capitalize; /* אותיות קטנות */
+        transition: all 0.3s ease;
+        text-decoration: none; /* הסרת קו תחתון */
+    }
+
+    .btn-read {
+        background-color: #007BFF; /* כחול לקריאה */
+        color: white;
+        border: none;
+    }
+
+        .btn-read:hover {
+            background-color: #0056b3;
+            transform: scale(1.1); /* אפקט זום */
+        }
+
+    .btn-download {
+        background-color: #4CAF50; /* ירוק להורדה */
+        color: white;
+        border: none;
+    }
+
+        .btn-download:hover {
+            background-color: #45a049;
+            transform: scale(1.1); /* אפקט זום */
+        }
+
+
+    .btn-icon {
+        font-size: 1rem; /* גודל אייקון */
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: space-between; /* כפתורים בקצוות */
+        margin-top: 10px;
+    }
+
+    img {
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+</style>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-info">
+            <strong>@ViewBag.Message</strong>
+        </div>
+    }
+
+    @if (Model.Any())
+    {
+        <div class="row">
+            @foreach (var userBook in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <!-- Book Image -->
+                        <img src="@Url.Content(userBook.Book.ImageUrl ?? "/images/default.jpg")"
+                             class="card-img-top"
+                             alt="Book Image">
+
+                        <!-- Card Body -->
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">@userBook.Book.Name</h5>
+                            <p class="card-text">@userBook.Book.Author</p>
+                            <p class="card-text book-detail"><strong>Published On:</strong> @userBook.Book.DatePublished.ToString("yyyy-MM-dd")</p>
+                            <p class="card-text book-detail">
+                                <strong>Time to borrow:</strong>
+                                @{
+                                    if (userBook.Dateborrowbook.HasValue)
+                                    {
+                                        var remainingTime = userBook.Dateborrowbook.Value - DateTime.UtcNow;
+
+                                        var daysLeft = remainingTime.Days;
+                                        var hoursLeft = remainingTime.Hours;
+                                        var minLeft = remainingTime.Minutes;
+
+                                        @($"{daysLeft} days and {hoursLeft} hours and { minLeft} minitus");
+                                    }
+                                    else
+                                    {
+                                        @("N/A")
+                                    }
+                                }
+                            </p>
+
+                            <form asp-action="Removewaitlist" method="post" class="mt-3">
+                                <input type="hidden" name="borrowedBookId" value="@userBook.Id" />
+                                <button type="submit" class="btn btn-danger">Remove</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            }
+        </div>
+
+
+
+    }
+    else
+    {
+        <div class="alert alert-info">
+            <strong>No wait books found.</strong>
+        </div>
+    }
+</div>
+

@@ -1,0 +1,88 @@
+﻿@model idefny.Models.Book
+
+<h2>تعديل بيانات الكتاب</h2>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">اسم الكتاب</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Author" class="control-label">اسم المؤلف</label>
+        <input asp-for="Author" class="form-control" />
+        <span asp-validation-for="Author" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Genre" class="control-label">النوع الأدبي</label>
+        <input asp-for="Genre" class="form-control" />
+        <span asp-validation-for="Genre" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price" class="control-label">السعر</label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Age" class="control-label">الفئة العمرية</label>
+        <input asp-for="Age" class="form-control" />
+        <span asp-validation-for="Age" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NumberOfCopies" class="control-label">عدد النسخ</label>
+        <input asp-for="NumberOfCopies" class="form-control" />
+        <span asp-validation-for="NumberOfCopies" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AvailableForBorrow" class="control-label">عدد النسخ المتاحة للإعارة</label>
+        <input asp-for="AvailableForBorrow" class="form-control" />
+        <span asp-validation-for="AvailableForBorrow" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DatePublished" class="control-label">تاريخ النشر</label>
+        <input asp-for="DatePublished" class="form-control" type="date" />
+        <span asp-validation-for="DatePublished" class="text-danger"></span>
+    </div>
+
+    <!-- رفع صورة الكتاب -->
+    <div class="form-group">
+        <label for="ImageFile" class="control-label">رفع صورة الكتاب</label>
+        <input type="file" name="ImageFile" class="form-control" />
+        <span class="text-danger"></span>
+    </div>
+
+    <!-- رفع ملف PDF -->
+    <div class="form-group">
+        <label for="PdfFile" class="control-label">رفع ملف PDF للكتاب</label>
+        <input type="file" name="PdfFile" class="form-control" />
+        <span class="text-danger"></span>
+    </div>
+
+    <!-- عرض الصورة الحالية إن وجدت -->
+    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+    {
+        <div class="mt-3">
+            <label>الصورة الحالية:</label>
+            <img src="@Model.ImageUrl" alt="صورة الكتاب" style="max-height: 100px; object-fit: cover;" />
+        </div>
+    }
+
+    <!-- عرض ملف PDF الحالي إن وجد -->
+    @if (!string.IsNullOrEmpty(Model.PdfUrl))
+    {
+        <div class="mt-3">
+            <label>ملف PDF الحالي:</label>
+            <a href="@Model.PdfUrl" target="_blank">تحميل الملف</a>
+        </div>
+    }
+
+    <button type="submit" class="btn btn-primary mt-3">حفظ التعديلات</button>
+</form>
+

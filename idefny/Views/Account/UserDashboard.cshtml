@@ -1,0 +1,102 @@
+﻿
+@model IEnumerable<idefny.Models.Borrow>
+
+@{
+    var userName = User.Identity.Name; // Get the current user's name
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/images/library.jpg'); /* Path to your image in wwwroot/images */
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+            .header h1 {
+                font-size: 2.5rem;
+                color: #007bff;
+            }
+
+        .borrow-item {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+            .borrow-item h5 {
+                font-size: 1.5rem;
+                color: #333;
+            }
+
+            .borrow-item p {
+                font-size: 1rem;
+                color: #666;
+            }
+
+        .btn {
+            margin: 5px;
+        }
+
+        .btn-secondary, .btn-info {
+            font-size: 1rem;
+            padding: 10px 20px;
+        }
+
+        .waiting-time {
+            font-weight: bold;
+            color: #d9534f;
+        }
+
+        .wait-time-label {
+            font-weight: normal;
+            color: #5bc0de;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <div class="header">
+            <h1>Hello, @userName</h1>
+            <p>Welcome to your Dashboard. Here you can manage your borrowed books and check the waiting list.</p>
+        </div>
+
+        <div class="actions">
+            <a href="@Url.Action("MyBorrowedBooks", "BookBorrow")" class="btn btn-info">My Borrowed Books</a>
+            <!-- Add this link to show purchased books -->
+            <a href="@Url.Action("MyPurchasedBooks", "BookBorrow")" class="btn btn-info">My Purchased Books</a>
+            <a href="@Url.Action("MyWaitlist", "BookBorrow")" class="btn btn-info">My waitlisyt Books</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
+

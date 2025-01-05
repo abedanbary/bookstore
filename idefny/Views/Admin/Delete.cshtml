@@ -1,0 +1,14 @@
+﻿@model idefny.Models.Users
+
+<h2>هل أنت متأكد من أنك تريد حذف المستخدم؟</h2>
+
+<div>
+    <p>اسم المستخدم: @Model.UserName</p>
+    <p>البريد الإلكتروني: @Model.Email</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button type="submit" class="btn btn-danger">نعم، حذف</button>
+    <a href="@Url.Action("Index", "Admin")" class="btn btn-secondary">إلغاء</a>
+</form>

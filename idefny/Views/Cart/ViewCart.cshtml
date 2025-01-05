@@ -1,0 +1,174 @@
+﻿@model idefny.Models.Cart
+
+@{
+    ViewData["Title"] = "سلة التسوق الخاصة بك";
+}
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلة التسوق الخاصة بك</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/images/library.jpg'); /* Path to your image in wwwroot/images */
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+        .container {
+            margin-top: 30px;
+        }
+
+        .table th, .table td {
+            text-align: center;
+        }
+
+        .badge-buy {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .badge-borrow {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .total-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .btn-custom {
+            background-color: #17a2b8;
+            color: white;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+            .btn-custom:hover {
+                background-color: #138496;
+            }
+
+        .alert-warning {
+            background-color: #ffc107;
+            color: black;
+            font-size: 16px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="text-center">@ViewData["Title"]</h2>
+
+        @if (Model.CartItems.Any())
+        {
+                var borrowPrice2 = 0m;
+
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>اسم الكتاب</th>
+                            <th>الكمية</th>
+                            <th>السعر</th>
+                            <th>الإجراءات</th>
+                            <th>النوع</th>  <!-- New column for Buy/Borrow action -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.CartItems)
+                            {
+                             
+                            <tr>
+                                <td>@item.Book.Name</td>
+                                <td>@item.Quantity</td>
+                                @if (item.IsBuying2)
+                                {
+                                    <td>@string.Format("{0:C}", item.Price * item.Quantity)</td>
+                                }
+                                else
+                                {
+                                    <td>@string.Format("{0:C}", item.Price*0.2m * item.Quantity)</td>
+                                }
+                                <td>
+                                    <form asp-action="RemoveFromCart" method="post" class="d-inline-block">
+                                        <input type="hidden" name="cartItemId" value="@item.Id" />
+                                        <button type="submit" class="btn btn-danger btn-sm">إزالة</button>
+                                    </form>
+                                </td>
+
+                                <td>
+                                    @if (item.IsBuying2)
+                                    {
+                                        <span class="badge badge-buy">شراء</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-borrow">إعارة</span>
+
+                                    }
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="total-section">
+                <div>
+                    <h4>المجموع الكلي: </h4>
+
+                    @foreach (var item in Model.CartItems)
+                    {
+                        if (item.IsBuying2)
+                        {
+                            borrowPrice2 += item.Price;
+                        }
+                        else
+                        {
+                            borrowPrice2 += (item.Price * 0.2m);
+                        }
+
+                    }
+                    <span>@string.Format("{0:C}", borrowPrice2)</span>
+
+                </div>
+
+               
+                <form asp-action="CheckoutCart" method="post">
+                    <button type="submit" class="btn btn-custom">إتمام الشراء والإعارة</button>
+                </form>
+
+            </div>
+        }
+        else
+        {
+            <div class="alert-warning">
+                سلتك فارغة.
+            </div>
+        }
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+

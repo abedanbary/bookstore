@@ -1,0 +1,116 @@
+﻿@model IEnumerable<idefny.Models.Book>
+
+<h2>قائمة الكتب</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>الاسم</th>
+            <th>المؤلف</th>
+            <th>النوع</th>
+            <th>السعر</th>
+            <th>متاح للإعارة</th>
+            <th>الخصم</th> <!-- عرض الخصم -->
+            <th>الإجراءات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Name</td>
+                <td>@book.Author</td>
+                <td>@book.Genre</td>
+                <td>@book.Price</td>
+                <td>
+                    @if (book.AvailableForBorrow > 0)
+                    {
+                        <span class="text-success">نعم</span> <!-- الكتاب متاح للإعارة -->
+                    }
+                    else
+                    {
+                        <span class="text-danger">لا</span> <!-- الكتاب غير متاح للإعارة -->
+                    }
+                </td>
+                <td>
+                    @if (book.DiscountPercentage2 > 0)
+                    {
+                        <span>@book.DiscountPercentage2 %</span> <!-- عرض الخصم الحالي -->
+                    }
+                    else
+                    {
+                        <span>لا يوجد خصم</span>
+                    }
+                </td>
+                <td>
+                    <a href="@Url.Action("Details", "Book", new { id = book.Id })" class="btn btn-info btn-sm">التفاصيل</a> |
+                    <a href="@Url.Action("Edit", "Book", new { id = book.Id })" class="btn btn-primary btn-sm">تعديل</a> |
+                    <form asp-action="Delete" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@book.Id" />
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('هل أنت متأكد أنك تريد حذف هذا الكتاب؟');">
+                            حذف
+                        </button>
+                    </form> |
+                    <!-- زر تعيين الخصم -->
+                    <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#DiscountModal" data-id="@book.Id" data-current-discount="@book.DiscountPercentage2">
+                        تعيين الخصم
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="modal fade" id="DiscountModal" tabindex="-1" role="dialog" aria-labelledby="DiscountModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="DiscountModalLabel">Set Discount</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" asp-action="SetDiscount">
+                <div class="modal-body">
+                    <input type="hidden" name="id" id="BookId" />
+                    <div class="form-group">
+                        <label>Select Discount (%)</label>
+                        <!-- Predefined discount buttons -->
+                        <div class="btn-group" role="group" aria-label="Discount options">
+                            <button type="button" class="btn btn-primary" data-discount="10">10%</button>
+                            <button type="button" class="btn btn-primary" data-discount="20">20%</button>
+                            <button type="button" class="btn btn-primary" data-discount="30">30%</button>
+                            <button type="button" class="btn btn-primary" data-discount="50">50%</button>
+                            <button type="button" class="btn btn-primary" data-discount="100">100%</button>
+                        </div>
+                    </div>
+                    <!-- Hidden field to pass the discount value -->
+                    <input type="hidden" name="discount" id="Discount" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Apply Discount</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- زر لإضافة كتاب جديد -->
+<button class="btn btn-success" onclick="window.location.href='@Url.Action("Create", "Book")'">إضافة كتاب جديد</button>
+
+<script>// When a discount button is clicked
+    $('.btn-group .btn').on('click', function () {
+        var discountValue = $(this).data('discount');  // Get the discount value from the button
+        $('#Discount').val(discountValue);  // Set the hidden input field to this value
+    });
+
+    // When the modal is opened, set the BookId in the hidden field
+    $('#DiscountModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var bookId = button.data('id'); // Extract the book id from data-attributes
+
+        var modal = $(this);
+        modal.find('.modal-body #BookId').val(bookId); // Set the BookId field in the modal
+    });</script>
+

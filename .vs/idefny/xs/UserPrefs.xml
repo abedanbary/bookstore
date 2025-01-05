@@ -1,0 +1,61 @@
+﻿<Properties StartupConfiguration="{22C3EA20-6F2C-44EC-9E4C-E9D979CAD732}|https">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.idefny PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="idefny/Data/AppDbContext.cs">
+    <Files>
+      <File FileName="idefny/Views/Cart/ViewCart.cshtml" />
+      <File FileName="idefny/Controllers/CartController.cs" />
+      <File FileName="idefny/Models/CartItem.cs" />
+      <File FileName="idefny/Views/Store/Index.cshtml" />
+      <File FileName="idefny/Controllers/StoreController.cs" />
+      <File FileName="idefny/Views/Shared/_Layout.cshtml" />
+      <File FileName="idefny/Views/Shared/_LoginPartial.cshtml" />
+      <File FileName="idefny/ViewModels/BookViewModel.cs" />
+      <File FileName="idefny/Controllers/ReviewController.cs" />
+      <File FileName="idefny/Models/Review.cs" />
+      <File FileName="idefny/Views/Store/Details.cshtml" />
+      <File FileName="idefny/Views/BookBorrow/MyWaitlist.cshtml" />
+      <File FileName="idefny/Views/BookBorrow/MyBorrowedBooks.cshtml" />
+      <File FileName="idefny/Services/AutoReturnService.cs" />
+      <File FileName="idefny/Models/Waitlist.cs" />
+      <File FileName="idefny/Controllers/BookBorrowController.cs" />
+      <File FileName="idefny/Controllers/BookController.cs" />
+      <File FileName="idefny/Controllers/HomeController.cs" />
+      <File FileName="idefny/Controllers/AdminController.cs" />
+      <File FileName="idefny/Models/Book.cs" Line="1" Column="1" />
+      <File FileName="idefny/Controllers/AccountController.cs" />
+      <File FileName="idefny/Models/BorrowedBook.cs" />
+      <File FileName="idefny/ViewModels/BookDetailsViewModel.cs" />
+      <File FileName="idefny/Migrations/20250104191433_AddDiscountPercentage2ToBooks.cs" />
+      <File FileName="idefny/Data/AppDbContext.cs" Line="160" Column="11" />
+      <File FileName="idefny/Views/Shared/_AccountLayout.cshtml" />
+      <File FileName="idefny/Views/Shared/_ValidationScriptsPartial.cshtml" />
+      <File FileName="idefny/Views/Shared/Error.cshtml" />
+      <File FileName="idefny/Program.cs" />
+      <File FileName="idefny/Views/_ViewStart.cshtml" />
+      <File FileName="idefny/Views/_ViewImports.cshtml" />
+      <File FileName="idefny/Views/Account/UserDashboard.cshtml" />
+      <File FileName="idefny/Views/Admin/Dashboard.cshtml" Line="107" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="idefny" expanded="True">
+            <Node name="idefny" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Data" expanded="True" />
+              <Node name="wwwroot" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/farsnbary/Projects/idefny/idefny/Migrations/20241225213351_AddReturnDateToBorrowedBooks.cs" relfile="idefny/Migrations/20241225213351_AddReturnDateToBorrowedBooks.cs" line="16" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+</Properties>
