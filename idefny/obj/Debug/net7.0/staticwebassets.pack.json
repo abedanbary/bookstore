@@ -33,6 +33,10 @@
       "PackagePath": "staticwebassets/images/book1.jpg"
     },
     {
+      "Id": "/Users/farsnbary/Projects/idefny/idefny/wwwroot/images/book10.jpg",
+      "PackagePath": "staticwebassets/images/book10.jpg"
+    },
+    {
       "Id": "/Users/farsnbary/Projects/idefny/idefny/wwwroot/images/book2.jpg",
       "PackagePath": "staticwebassets/images/book2.jpg"
     },
@@ -47,6 +51,22 @@
     {
       "Id": "/Users/farsnbary/Projects/idefny/idefny/wwwroot/images/book5.jpg",
       "PackagePath": "staticwebassets/images/book5.jpg"
+    },
+    {
+      "Id": "/Users/farsnbary/Projects/idefny/idefny/wwwroot/images/book6.jpg",
+      "PackagePath": "staticwebassets/images/book6.jpg"
+    },
+    {
+      "Id": "/Users/farsnbary/Projects/idefny/idefny/wwwroot/images/book7.jpg",
+      "PackagePath": "staticwebassets/images/book7.jpg"
+    },
+    {
+      "Id": "/Users/farsnbary/Projects/idefny/idefny/wwwroot/images/book8.jpg",
+      "PackagePath": "staticwebassets/images/book8.jpg"
+    },
+    {
+      "Id": "/Users/farsnbary/Projects/idefny/idefny/wwwroot/images/book9.jpg",
+      "PackagePath": "staticwebassets/images/book9.jpg"
     },
     {
       "Id": "/Users/farsnbary/Projects/idefny/idefny/wwwroot/images/default.jpg",
@@ -321,6 +341,10 @@
       "PackagePath": "staticwebassets/pdfs/book1.pdf"
     },
     {
+      "Id": "/Users/farsnbary/Projects/idefny/idefny/wwwroot/pdfs/book10.pdf",
+      "PackagePath": "staticwebassets/pdfs/book10.pdf"
+    },
+    {
       "Id": "/Users/farsnbary/Projects/idefny/idefny/wwwroot/pdfs/book2.pdf",
       "PackagePath": "staticwebassets/pdfs/book2.pdf"
     },
@@ -335,6 +359,22 @@
     {
       "Id": "/Users/farsnbary/Projects/idefny/idefny/wwwroot/pdfs/book5.pdf",
       "PackagePath": "staticwebassets/pdfs/book5.pdf"
+    },
+    {
+      "Id": "/Users/farsnbary/Projects/idefny/idefny/wwwroot/pdfs/book6.pdf",
+      "PackagePath": "staticwebassets/pdfs/book6.pdf"
+    },
+    {
+      "Id": "/Users/farsnbary/Projects/idefny/idefny/wwwroot/pdfs/book7.pdf",
+      "PackagePath": "staticwebassets/pdfs/book7.pdf"
+    },
+    {
+      "Id": "/Users/farsnbary/Projects/idefny/idefny/wwwroot/pdfs/book8.pdf",
+      "PackagePath": "staticwebassets/pdfs/book8.pdf"
+    },
+    {
+      "Id": "/Users/farsnbary/Projects/idefny/idefny/wwwroot/pdfs/book9.pdf",
+      "PackagePath": "staticwebassets/pdfs/book9.pdf"
     },
     {
       "Id": "/Users/farsnbary/Projects/idefny/idefny/wwwroot/pdfs/rtrtr.pdf",

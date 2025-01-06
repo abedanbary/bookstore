@@ -83,18 +83,28 @@
                     }
                 }
             </div>
-           
+
             <p><strong>Author:</strong> @Model.Book.Author</p>
             <p><strong>Genre:</strong> @Model.Book.Genre</p>
-           
+
             @if (Model.Book.DiscountEndDate < DateTime.UtcNow)
             {
                 <p><strong>Price:</strong> @Model.Book.Price.ToString("C", new System.Globalization.CultureInfo("he-IL"))</p>
+                <p>
+                    <strong>Price of borrow:</strong>
+                    @((Model.Book.DiscountedPrice * 0.2m).ToString("C", new System.Globalization.CultureInfo("he-IL")))
+                </p>
+
 
             }
             else
             {
+                var borrowprice = @Model.Book.DiscountedPrice * 0.2m;
                 <p><strong>Price:</strong> @Model.Book.DiscountedPrice.ToString("C", new System.Globalization.CultureInfo("he-IL"))</p>
+                <p>
+                    <strong>Price of borrow:</strong>
+                    @((Model.Book.DiscountedPrice * 0.2m).ToString("C", new System.Globalization.CultureInfo("he-IL")))
+                </p>
 
             }
             <p><strong>Published On:</strong> @Model.Book.DatePublished.ToString("yyyy-MM-dd")</p>
@@ -112,7 +122,7 @@
                         <button type="submit" class="btn btn-warning">Add to Cart for Buying</button>
                     </form>
 
-                    }
+                    
 
 
                     @if (Model.Book.AvailableForBorrow > 0)

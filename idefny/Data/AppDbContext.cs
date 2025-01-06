@@ -158,6 +158,98 @@ namespace idefny.Data
                  DiscountEndDate = null
              }
          );
+            modelBuilder.Entity<Book>().HasData(
+    new Book
+    {
+        Id = -6,
+        Name = "Pride and Prejudice",
+        Author = "Jane Austen",
+        Age = 16,
+        Genre = "Romance",
+        NumberOfCopies = 8,
+        AvailableForBorrow = 4,
+        IsAvailableForBorrow = true,
+        DatePublished = new DateTime(1813, 1, 28, 0, 0, 0, DateTimeKind.Utc),
+        Price = 10.99m,
+        ImageUrl = "/images/book6.jpg",
+        PdfUrl = "/pdfs/book6.pdf",
+        DiscountPercentage2 = null,
+        DiscountStartDate = null,
+        DiscountEndDate = null
+    },
+    new Book
+    {
+        Id = -7,
+        Name = "Jane Eyre",
+        Author = "Charlotte Brontë",
+        Age = 15,
+        Genre = "Romance",
+        NumberOfCopies = 6,
+        AvailableForBorrow = 3,
+        IsAvailableForBorrow = true,
+        DatePublished = new DateTime(1847, 10, 16, 0, 0, 0, DateTimeKind.Utc),
+        Price = 12.99m,
+        ImageUrl = "/images/book7.jpg",
+        PdfUrl = "/pdfs/book7.pdf",
+        DiscountPercentage2 = null,
+        DiscountStartDate = null,
+        DiscountEndDate = null
+    },
+    new Book
+    {
+        Id = -8,
+        Name = "Wuthering Heights",
+        Author = "Emily Brontë",
+        Age = 15,
+        Genre = "Romance",
+        NumberOfCopies = 5,
+        AvailableForBorrow = 2,
+        IsAvailableForBorrow = true,
+        DatePublished = new DateTime(1847, 12, 17, 0, 0, 0, DateTimeKind.Utc),
+        Price = 11.49m,
+        ImageUrl = "/images/book8.jpg",
+        PdfUrl = "/pdfs/book8.pdf",
+        DiscountPercentage2 = null,
+        DiscountStartDate = null,
+        DiscountEndDate = null
+    },
+    new Book
+    {
+        Id = -9,
+        Name = "The Notebook",
+        Author = "Nicholas Sparks",
+        Age = 14,
+        Genre = "Romance",
+        NumberOfCopies = 10,
+        AvailableForBorrow = 5,
+        IsAvailableForBorrow = true,
+        DatePublished = new DateTime(1996, 10, 1, 0, 0, 0, DateTimeKind.Utc),
+        Price = 9.99m,
+        ImageUrl = "/images/book9.jpg",
+        PdfUrl = "/pdfs/book9.pdf",
+        DiscountPercentage2 = null,
+        DiscountStartDate = null,
+        DiscountEndDate = null
+    },
+    new Book
+    {
+        Id = -10,
+        Name = "Gone with the Wind",
+        Author = "Margaret Mitchell",
+        Age = 17,
+        Genre = "Romance",
+        NumberOfCopies = 7,
+        AvailableForBorrow = 3,
+        IsAvailableForBorrow = true,
+        DatePublished = new DateTime(1936, 6, 30, 0, 0, 0, DateTimeKind.Utc),
+        Price = 14.99m,
+        ImageUrl = "/images/book10.jpg",
+        PdfUrl = "/pdfs/book10.pdf",
+        DiscountPercentage2 = null,
+        DiscountStartDate = null,
+        DiscountEndDate = null
+    }
+);
 
 
 
